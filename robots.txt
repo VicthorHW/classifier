@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://victhorhw.github.io/Classifier/sitemap.xml
+
+# Disallow voting page from indexing (as it's a tool, not content)
+Disallow: /votacao
+
+# Allow all other pages
+Allow: /sobre
+Allow: /contato
+Allow: /faq
+Allow: /privacidade
+Allow: /termos
