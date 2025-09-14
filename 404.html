@@ -5,27 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecionando...</title>
     <script>
-        // Script para resolver problemas de roteamento no GitHub Pages
-        // Redireciona para a página principal mantendo o path correto
-        
-        var path = window.location.pathname;
-        var basePath = '/classifier/';
-        
-        // Se não estiver no caminho correto, redireciona para /classifier/
-        if (!path.startsWith(basePath)) {
-            // Se estiver na raiz, redireciona para /classifier/
-            if (path === '/' || path === '') {
+        // Script otimizado para resolver problemas de roteamento no GitHub Pages
+        (function() {
+            var path = window.location.pathname;
+            var basePath = '/classifier/';
+            
+            // Evita loops de redirecionamento
+            if (path.includes('404.html')) {
                 window.location.replace(basePath);
-            } else {
-                // Se estiver em outro caminho, redireciona para /classifier/ + o caminho
-                var newPath = basePath + path.replace(/^\//, '');
-                window.location.replace(newPath);
+                return;
             }
-        } else {
-            // Se já estiver no caminho correto, recarrega a página
-            // Isso resolve problemas quando o usuário dá F5
-            window.location.replace(window.location.href);
-        }
+            
+            // Se estiver na raiz ou em caminho incorreto, redireciona
+            if (path === '/' || path === '' || !path.startsWith(basePath)) {
+                var targetPath = basePath;
+                
+                // Se tiver um path específico, preserva ele
+                if (path !== '/' && path !== '') {
+                    targetPath = basePath + path.replace(/^\//, '');
+                }
+                
+                // Redireciona imediatamente
+                window.location.replace(targetPath);
+            }
+        })();
     </script>
     <style>
         body {
